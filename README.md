@@ -16,6 +16,10 @@
 - Some sources only offer **unofficial** public endpoints: they are clearly labelled and always optional.
 - No password, no cookie: only public profile data, or a token that stays in your own repository secrets.
 
+## Documents
+
+- [Provider candidates, ranking and tested endpoints](docs/providers.md)
+
 ## Roadmap
 
 See the issues, starting with the scope of the first release.
