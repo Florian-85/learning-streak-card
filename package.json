@@ -1,0 +1,16 @@
+{
+  "name": "learning-streak-card",
+  "version": "0.1.0",
+  "description": "A single SVG card for your learning streak, built by a GitHub Action. No server, no dependency.",
+  "license": "MIT",
+  "private": true,
+  "type": "commonjs",
+  "main": "src/index.js",
+  "bin": { "learning-streak-card": "bin/cli.js" },
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node --test",
+    "examples": "node scripts/build-examples.js"
+  },
+  "repository": { "type": "git", "url": "git+https://github.com/Florian-85/learning-streak-card.git" }
+}
