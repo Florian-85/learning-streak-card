@@ -8,6 +8,7 @@ const path = require("node:path");
 const { generate, THEME_NAMES, LANG_NAMES } = require("../src");
 const { fromFixture, NOW } = require("../test/helpers");
 
+process.chdir(path.join(__dirname, ".."));
 const outDir = path.join(__dirname, "..", "examples");
 
 async function write(name, options, fixtureName) {
@@ -24,7 +25,7 @@ async function write(name, options, fixtureName) {
     }
   }
   await write("chesscom-dark-en.svg", { provider: "chesscom", username: "sample-player", theme: "dark", lang: "en" }, "chesscom-stats.json");
-  const manual = { provider: "manual", file: path.join(outDir, "learning-streak.manual.json"), theme: "light", lang: "en" };
+  const manual = { provider: "manual", file: "examples/learning-streak.manual.json", theme: "light", lang: "en" };
   const { svg } = await generate(manual, { now: NOW });
   fs.writeFileSync(path.join(outDir, "manual-light-en.svg"), svg);
   console.log("examples/manual-light-en.svg");
