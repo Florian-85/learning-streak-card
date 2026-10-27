@@ -10,7 +10,7 @@ One SVG card for your learning: experience points, current streak and the age of
 
 > The cards in this README are real output of the renderer, drawn from **sample data** (`npm run examples`), not from a real account.
 
-> **Status: v0.1, pre-release.** The `@v0.1` tag used below exists once the first release is cut.
+> **Status: v0.1**, first public version. Pin `@v0.1` in your workflow; breaking changes will get a new tag.
 
 ## ⚡ Quick setup
 
