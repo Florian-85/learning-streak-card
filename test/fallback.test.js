@@ -127,3 +127,15 @@ test("the title option and manual title appear in the header", async () => {
   const { svg } = await run({ ...OPTIONS, title: "Mon espagnol" }, fromFixture("duolingo-profile.json"));
   assert.match(svg, />MON ESPAGNOL</);
 });
+
+test("manual: values that break the contract fail loudly instead of keeping the old card", async () => {
+  const fs = require("node:fs");
+  const os = require("node:os");
+  const file = require("node:path").join(fs.mkdtempSync(require("node:path").join(os.tmpdir(), "lsc-m-")), "d.json");
+  fs.writeFileSync(file, JSON.stringify({ xp: 1 }));
+  const first = await generate({ provider: "manual", file }, { now: NOW });
+  for (const bad of [{ xp: 2, startedOn: "2099-01", columns: ["xp", "streakDays", "startedOn"] }, { xp: 2, studyHours: 1e9 }]) {
+    fs.writeFileSync(file, JSON.stringify(bad));
+    await assert.rejects(generate({ provider: "manual", file }, { now: NOW, previousSvg: first.svg }), ConfigError);
+  }
+});

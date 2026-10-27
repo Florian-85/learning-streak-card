@@ -57,4 +57,4 @@ async function collect(config) {
   return { account, columns, title: data.title ? account : undefined };
 }
 
-module.exports = { id: "manual", defaultTitle: "Learning", validate, collect };
+module.exports = { id: "manual", local: true, defaultTitle: "Learning", validate, collect };

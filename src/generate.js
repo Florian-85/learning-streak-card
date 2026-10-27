@@ -50,7 +50,14 @@ async function generate(rawOptions, deps = {}) {
   try {
     result = await provider.collect(options, { fetchImpl: deps.fetchImpl ?? fetch, timeoutMs: deps.timeoutMs, retryDelayMs: deps.retryDelayMs });
     const asOf = now.toISOString().slice(0, 10);
-    const card = validateCard({ v: 1, key, provider: provider.id, account: result.account, asOf, columns: result.columns }, now);
+    let card;
+    try {
+      card = validateCard({ v: 1, key, provider: provider.id, account: result.account, asOf, columns: result.columns }, now);
+    } catch (error) {
+      // A local provider has no "source outage": invalid values are the user's mistake and must be visible.
+      if (provider.local && error instanceof ProviderError) throw new ConfigError(`${provider.id}: ${error.message}`);
+      throw error;
+    }
     if (reusable && sameColumns(reusable.columns, card.columns)) card.asOf = reusable.asOf;
     return { svg: render(card, false, result.title), status: "fresh" };
   } catch (error) {
