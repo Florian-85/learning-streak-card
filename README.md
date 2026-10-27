@@ -2,7 +2,7 @@
 
 One SVG card for your learning: experience points, current streak and the age of your account, from **Duolingo**, **Chess.com** or numbers you type yourself. It is built by a GitHub Action in your own repository: no server, no account, no token, no dependency.
 
-**In short:** *learning-streak-card* is a GitHub Action that generates a Duolingo (or Chess.com) streak and XP card as an SVG file for your GitHub profile README. It runs on a schedule, commits the image only when the numbers change, and keeps the last valid values if the source is down.
+**In short:** *learning-streak-card* is a GitHub Action that generates an SVG card for your GitHub profile README: your Duolingo streak and XP, your Chess.com rating and games, or numbers you type yourself. It runs on a schedule, commits the image only when the numbers change, and keeps the last valid values if the source is down.
 
 <p align="center">
   <img src="examples/duolingo-dark-en.svg" alt="Sample card, dark theme" width="100%">
