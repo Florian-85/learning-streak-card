@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Learning Streak Card"
+abstract: "A single SVG card showing learning streak, XP and rating for a GitHub profile README. Built by a GitHub Action from Duolingo, Chess.com or manual data. No server, no dependency."
+type: software
+version: 0.1.0
+license: AGPL-3.0-only
+repository-code: "https://github.com/Florian-85/learning-streak-card"
+keywords:
+  - duolingo
+  - chess.com
+  - streak
+  - svg
+  - github-actions
+  - profile-readme
+authors:
+  - family-names: "BERTHET"
+    given-names: "Florian"

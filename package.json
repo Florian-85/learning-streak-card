@@ -1,16 +1,40 @@
 {
   "name": "learning-streak-card",
   "version": "0.1.0",
-  "description": "A single SVG card for your learning streak, built by a GitHub Action. No server, no dependency.",
+  "description": "SVG card of your learning streak, XP and rating for a GitHub profile README (Duolingo, Chess.com, manual). Built by a GitHub Action: no server, no dependency.",
+  "keywords": [
+    "duolingo",
+    "chess.com",
+    "streak",
+    "xp",
+    "svg",
+    "github-actions",
+    "github-profile",
+    "profile-readme",
+    "readme-card",
+    "learning",
+    "stats-card"
+  ],
+  "homepage": "https://github.com/Florian-85/learning-streak-card#readme",
+  "bugs": {
+    "url": "https://github.com/Florian-85/learning-streak-card/issues"
+  },
   "license": "AGPL-3.0-only",
   "private": true,
   "type": "commonjs",
   "main": "src/index.js",
-  "bin": { "learning-streak-card": "bin/cli.js" },
-  "engines": { "node": ">=18" },
+  "bin": {
+    "learning-streak-card": "bin/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "test": "node --test",
     "examples": "node scripts/build-examples.js"
   },
-  "repository": { "type": "git", "url": "git+https://github.com/Florian-85/learning-streak-card.git" }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Florian-85/learning-streak-card.git"
+  }
 }
