@@ -1,0 +1,16 @@
+# Learning Streak Card
+
+> A single SVG card (900x124) showing a learning streak, experience points and account age (Duolingo), or rating, best rating and games (Chess.com), or numbers typed by hand (manual). A GitHub Action builds it inside your own repository and commits it; the README embeds the committed file with an <img> tag. No server, no token, no dependency (Node 18+). Licence: AGPL-3.0.
+
+Key facts:
+- Providers: duolingo (unofficial public profile endpoint, use at own risk), chesscom (official public API), manual (local JSON file).
+- Themes: dark, light, funky-dark, funky-light. Languages: en, fr.
+- A value the source does not give is shown as "—", never as 0. Account age is not study time.
+- If the source is down, the last valid values are kept (stored inside the SVG) with a visible "Source unreachable" notice.
+- There is no hosted URL option in v0.1 (studied, rejected: docs/cloudflare-study.md).
+
+## Docs
+- [README and quick setup](https://github.com/Florian-85/learning-streak-card#readme)
+- [Add a provider](https://github.com/Florian-85/learning-streak-card/blob/main/docs/adding-a-provider.md)
+- [Privacy and API use](https://github.com/Florian-85/learning-streak-card/blob/main/docs/privacy-and-api-use.md)
+- [Hosted URL study (no-go)](https://github.com/Florian-85/learning-streak-card/blob/main/docs/cloudflare-study.md)

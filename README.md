@@ -2,6 +2,8 @@
 
 One SVG card for your learning: experience points, current streak and the age of your account, from **Duolingo**, **Chess.com** or numbers you type yourself. It is built by a GitHub Action in your own repository: no server, no account, no token, no dependency.
 
+**In short:** *learning-streak-card* is a GitHub Action that generates an SVG card for your GitHub profile README: your Duolingo streak and XP, your Chess.com rating and games, or numbers you type yourself. It runs on a schedule, commits the image only when the numbers change, and keeps the last valid values if the source is down.
+
 <p align="center">
   <img src="examples/duolingo-dark-en.svg" alt="Sample card, dark theme" width="100%">
 </p>
@@ -197,6 +199,10 @@ cd your-repo && node ../learning-streak-card/bin/cli.js --provider duolingo --us
 ```
 
 ## FAQ
+
+**How do I show my Duolingo streak on my GitHub profile?** Add the workflow from the Quick setup with `provider: duolingo` and your public username, run it once, then paste the `<img>` tag in your profile README. Your Duolingo profile must be public.
+
+**Can I show a Chess.com rating in my README?** Yes: `provider: chesscom`, `username`, and a `mode` (`rapid`, `blitz`, `bullet`, `daily`).
 
 **Do I need a token or an account on your service?** No. The workflow uses the `GITHUB_TOKEN` GitHub gives every run, and the providers read public data.
 
