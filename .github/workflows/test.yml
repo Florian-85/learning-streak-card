@@ -1,0 +1,51 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test
+      - name: Examples are up to date
+        run: |
+          node scripts/build-examples.js
+          git diff --exit-code -- examples
+
+  consumer:
+    # Uses the action exactly like a consumer repository does, with offline manual data.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          provider: manual
+          file: examples/learning-streak.manual.json
+          output: assets/ci-check.svg
+          commit: "false"
+      - name: The SVG exists and is a card
+        run: |
+          test -s assets/ci-check.svg
+          grep -q '<svg width="900" height="124"' assets/ci-check.svg
+      - name: A bad configuration fails the run with a clear message
+        id: bad
+        uses: ./
+        continue-on-error: true
+        with:
+          provider: manual
+          file: does-not-exist.json
+          output: assets/ci-bad.svg
+          commit: "false"
+      - run: test "${{ steps.bad.outcome }}" = "failure"

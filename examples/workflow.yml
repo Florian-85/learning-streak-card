@@ -1,0 +1,28 @@
+name: Update learning streak card
+
+on:
+  schedule:
+    - cron: "17 4 * * *"   # every day at 04:17 UTC; pick any minute you like
+  workflow_dispatch:        # lets you start it by hand from the Actions tab
+
+permissions:
+  contents: write           # only to commit the SVG; no other permission, no token to create
+
+concurrency:
+  group: learning-streak-card
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: Florian-85/learning-streak-card@v0.1
+        with:
+          provider: duolingo            # duolingo | chesscom | manual
+          username: YOUR_DUOLINGO_USERNAME
+          language: es                  # Duolingo course; remove the line for all courses
+          theme: dark                   # dark | light | funky-dark | funky-light
+          lang: en                      # en | fr

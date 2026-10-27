@@ -1,0 +1,78 @@
+name: Learning Streak Card
+description: Generate an SVG card of your learning streak (Duolingo, Chess.com or manual data) and commit it when it changed.
+author: Florian-85
+branding:
+  icon: zap
+  color: blue
+
+inputs:
+  provider:
+    description: "duolingo, chesscom or manual"
+    required: true
+  username:
+    description: Public account name (duolingo, chesscom).
+    required: false
+  language:
+    description: "Duolingo only: course language code such as es. Empty = all courses."
+    required: false
+  mode:
+    description: "Chess.com only: rapid, blitz, bullet or daily."
+    required: false
+  file:
+    description: "Manual only: path of your JSON data file."
+    required: false
+  theme:
+    description: "dark, light, funky-dark or funky-light."
+    required: false
+    default: dark
+  lang:
+    description: "en or fr."
+    required: false
+    default: en
+  title:
+    description: Text in the card header.
+    required: false
+  output:
+    description: Where the SVG is written, inside the repository.
+    required: false
+    default: assets/learning-streak.svg
+  commit:
+    description: Commit and push the SVG when it changed ("false" to only generate the file).
+    required: false
+    default: "true"
+  strict:
+    description: Fail the run instead of keeping the previous values when the source is unreachable.
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - name: Generate the card
+      shell: bash
+      # Inputs go through the environment, never straight into the script (no injection from input text).
+      env:
+        ACTION_PATH: ${{ github.action_path }}
+        IN_PROVIDER: ${{ inputs.provider }}
+        IN_USERNAME: ${{ inputs.username }}
+        IN_LANGUAGE: ${{ inputs.language }}
+        IN_MODE: ${{ inputs.mode }}
+        IN_FILE: ${{ inputs.file }}
+        IN_THEME: ${{ inputs.theme }}
+        IN_LANG: ${{ inputs.lang }}
+        IN_TITLE: ${{ inputs.title }}
+        IN_OUTPUT: ${{ inputs.output }}
+        IN_STRICT: ${{ inputs.strict }}
+      run: |
+        args=(--provider "$IN_PROVIDER" --username "$IN_USERNAME" --language "$IN_LANGUAGE" --mode "$IN_MODE"
+              --file "$IN_FILE" --theme "$IN_THEME" --lang "$IN_LANG" --title "$IN_TITLE" --out "$IN_OUTPUT")
+        if [ "$IN_STRICT" = "true" ]; then args+=(--strict); fi
+        node "$ACTION_PATH/bin/cli.js" "${args[@]}"
+
+    - name: Commit if changed
+      if: ${{ inputs.commit == 'true' }}
+      shell: bash
+      env:
+        ACTION_PATH: ${{ github.action_path }}
+        IN_OUTPUT: ${{ inputs.output }}
+      run: bash "$ACTION_PATH/scripts/commit-if-changed.sh" "$IN_OUTPUT"

@@ -4,6 +4,15 @@ Measured on **2026-10-20** with public accounts. Everything here is public profi
 "Unofficial" means the endpoint is public but not documented as an API, so it can change without notice: such providers
 must stay optional and fall back to the last known value.
 
+## Status in v0.1
+
+| Provider | v0.1 | Notes |
+|---|---|---|
+| Duolingo | **implemented** | unofficial endpoint, see [privacy-and-api-use.md](privacy-and-api-use.md) |
+| Chess.com | **implemented** (second provider) | chosen over Codewars: official API, higher priority in the ranking below, and rating/best rating/games are all real fields. No streak |
+| Manual | **implemented** | |
+| Others | not started | one file each, see [adding-a-provider.md](adding-a-provider.md) |
+
 ## Priority
 
 | # | Provider | Why this rank |
