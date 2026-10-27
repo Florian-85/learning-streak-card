@@ -2,7 +2,7 @@
   "name": "learning-streak-card",
   "version": "0.1.0",
   "description": "A single SVG card for your learning streak, built by a GitHub Action. No server, no dependency.",
-  "license": "MIT",
+  "license": "AGPL-3.0-only",
   "private": true,
   "type": "commonjs",
   "main": "src/index.js",

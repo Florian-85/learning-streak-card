@@ -170,7 +170,7 @@ A temporary outage must not destroy your card.
 
 | Provider | Access | Limitations |
 |---|---|---|
-| **Duolingo** | **Unofficial** public profile endpoint (`/2017-06-30/users`), no login. | Can change or disappear without notice. The profile must be public. Gives XP, streak and creation date only: **no level, no study time**. A streak is the one Duolingo reports at that moment. Duolingo's terms could not be retrieved automatically during the review of v0.1: read them yourself. |
+| **Duolingo** | **Unofficial** public profile endpoint (`/2017-06-30/users`), no login. | Can change or disappear without notice. The profile must be public. Gives XP, streak and creation date only: **no level, no study time**. A streak is the one Duolingo reports at that moment. **Terms risk:** Duolingo's Terms and Conditions (revised 2025-09-08) forbid using "data mining, robots, scraping, or similar data gathering" to obtain Service Content. Whether a public profile counter is Service Content is not settled, so this provider is used at your own risk and may be blocked; Chess.com and manual have no such issue. |
 | **Chess.com** | Official public API, no key. | No streak (shows best rating instead). Data refreshes about every 12 to 24 hours on their side. A mode never played gives an error. Chess.com asks to respect its branding: the card uses none of its logos. |
 | **Manual** | Local file. | You keep the numbers up to date. |
 
@@ -221,7 +221,7 @@ Layout: `src/render.js` (pure SVG renderer), `src/contract.js` (data contract), 
 
 ## License, credits and API use
 
-- Code: [MIT](LICENSE).
+- Copyright (C) 2026 Florian BERTHET. Code under the [GNU AGPL-3.0](LICENSE), the same licence as Daily Banner: you may use, modify and share it, and a modified version offered as an online service must publish its source. The cards you generate are yours.
 - The layout (a number on each side, a ring in the middle) is inspired by [GitHub Readme Streak Stats](https://github.com/DenverCoder1/github-readme-streak-stats) (MIT). No code or asset of that project is used.
 - **Duolingo** and **Chess.com** are trademarks of their owners. This project is not affiliated with or endorsed by them, and uses none of their logos or characters. Data belongs to the respective services and users; the card only displays public profile numbers of the account you name.
 - Please keep the schedule low (daily is plenty) to be kind to the services.
